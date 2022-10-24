@@ -74,7 +74,7 @@ public class BoardCrawling {
 
             for(int i=0; i<nums.size(); i++){
                 Board board = new Board();
-                board.setDepth_second(port);
+                board.setMenu(port);
                 board.setUrl(nums.get(i).child(0).attr("href"));
                 board.setPic_url(nums.get(i).child(0).child(0).attr("src"));
                 board.setName(nums.get(i).getElementsByTag("h4").text());
@@ -99,7 +99,7 @@ public class BoardCrawling {
         Elements nums = document.select("td");
         for(int i=0; i<nums.size()-6; i+=6){
             Board board =new Board();
-            board.setDepth_second(port);
+            board.setMenu(port);
             board.setBoard_num(nums.get(i).text()); //번호
             board.setUrl(nums.get(i+1).childNode(0).attr("href")); //url
             board.setName(nums.get(i+1).text()); //제목
@@ -117,7 +117,7 @@ public class BoardCrawling {
         Elements nums = document.select("td");
         for(int i=0; i<nums.size()-6; i+=6){
             Board board =new Board();
-            board.setDepth_second(port);
+            board.setMenu(port);
             board.setBoard_num(nums.get(i).text()); //번호
             board.setUrl(nums.get(i+1).childNode(0).attr("href")); //url
             board.setName(nums.get(i+1).text()); //제목
@@ -137,7 +137,7 @@ public class BoardCrawling {
         Elements elements = document.select("tr");
         for(int i=1; i<elements.size(); i++){
             Board board =new Board();
-            board.setDepth_second(port);
+            board.setMenu(port);
             Element element =elements.get(i);
             board.setBoard_num(element.getElementsByClass("b-num-box").text());
             board.setDate(element.getElementsByClass("b-date").text());

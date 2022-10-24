@@ -16,7 +16,7 @@ public class Board {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private DepthSecond depth_second;
+    private DepthSecond menu;
 
     //해당게시글 url 저장
     private String url;
