@@ -18,7 +18,6 @@ public class JasyptConfigTest {
         String url = "jdbc:mysql://localhost:3306/cnubot?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul";
         String username = "root";
         String password = "1234";
-        //PASSWORD = System.getProperty("jasypt.encryptor.password");
         System.out.println(PASSWORD);
 
         String encryptUrl = jasyptEncrypt(url);

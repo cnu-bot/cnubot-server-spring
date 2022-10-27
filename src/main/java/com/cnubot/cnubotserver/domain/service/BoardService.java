@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface BoardService {
 
-    List<Board> getBoards(String menu_name);
+    List<Board> getBoards(String menuName);
 
     void refreshBoards();
 

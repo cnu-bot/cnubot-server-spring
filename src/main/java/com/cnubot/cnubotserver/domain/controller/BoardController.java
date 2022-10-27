@@ -27,17 +27,17 @@ public class BoardController {
     private final BoardService boardService;
 
     /**
-     * @param menu_name
+     * @param menuName
      * @return Http.status.ok & body(ListOfBoards)
      */
 
     @ApiOperation(value ="메뉴 이름에 따른 게시글 목록을 반환하는 메소드")
-    @ApiImplicitParam(name = "menu_name", value="조회할 게시글 메뉴 이름", required = true,
+    @ApiImplicitParam(name = "menuName", value="조회할 게시글 메뉴 이름", required = true,
     dataType = "String")
    @GetMapping("/")
-    public ResponseEntity<List<Board>> boards(@RequestParam String menu_name){
-        List<Board> boardDtos = boardService.getBoards(menu_name);
-        return ResponseEntity.ok().body(boardDtos);
+    public ResponseEntity<List<Board>> boards(@RequestParam String menuName){
+        List<Board> boards = boardService.getBoards(menuName);
+        return ResponseEntity.ok().body(boards);
     }
 
 }

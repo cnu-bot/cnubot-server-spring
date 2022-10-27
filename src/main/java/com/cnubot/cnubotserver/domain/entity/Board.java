@@ -24,13 +24,15 @@ public class Board {
 
     private String hits;
 
-    private String board_num;
+    @Column(name = "board_num")
+    private String boardNum;
 
     private String date;
 
     private String writer;
 
-    private String pic_url;
+    @Column(name = "pic_url")
+    private String picUrl;
 
     private String period;
 

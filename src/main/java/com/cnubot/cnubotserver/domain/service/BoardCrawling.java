@@ -78,9 +78,9 @@ public class BoardCrawling {
             Board board = new Board();
             board.setMenu(port);
             board.setUrl(nums.get(i).child(0).attr("href"));
-            board.setPic_url(nums.get(i).child(0).child(0).attr("src"));
+            board.setPicUrl(nums.get(i).child(0).child(0).attr("src"));
             board.setName(nums.get(i).getElementsByTag("h4").text());
-            board.setBoard_num("");
+            board.setBoardNum("");
             board.setWriter(replace(nums.get(i).getElementsByTag("li").get(0).text()));
             board.setDate(replace(nums.get(i).getElementsByTag("li").get(1).text()));
             board.setHits(nums.get(i).getElementsByTag("li").get(2).text());
@@ -103,7 +103,7 @@ public class BoardCrawling {
         for (int i = 0; i < nums.size() - 6; i += 6) {
             Board board = new Board();
             board.setMenu(port);
-            board.setBoard_num(nums.get(i).text()); //번호
+            board.setBoardNum(nums.get(i).text()); //번호
             board.setUrl(nums.get(i + 1).childNode(0).attr("href")); //url
             board.setName(nums.get(i + 1).text()); //제목
             board.setWriter(nums.get(i + 2).text()); //적송저
@@ -122,7 +122,7 @@ public class BoardCrawling {
         for (int i = 0; i < nums.size() - 6; i += 6) {
             Board board = new Board();
             board.setMenu(port);
-            board.setBoard_num(nums.get(i).text()); //번호
+            board.setBoardNum(nums.get(i).text()); //번호
             board.setUrl(nums.get(i + 1).childNode(0).attr("href")); //url
             board.setName(nums.get(i + 1).text()); //제목
             board.setWriter(nums.get(i + 2).text()); //작성자
@@ -144,7 +144,7 @@ public class BoardCrawling {
             Board board = new Board();
             board.setMenu(port);
             Element element = elements.get(i);
-            board.setBoard_num(element.getElementsByClass("b-num-box").text());
+            board.setBoardNum(element.getElementsByClass("b-num-box").text());
             board.setDate(element.getElementsByClass("b-date").text());
             board.setWriter(element.getElementsByClass("b-writer").text());
             board.setHits(element.getElementsByClass("hit").text().split(" ")[1]);
