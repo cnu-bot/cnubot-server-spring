@@ -8,7 +8,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true
@@ -17,6 +17,16 @@ spring:
   mvc: ##swagger연동을 위한 설정
     pathmatch:
       matching-strategy: ant_path_matcher
+  main:
+    allow-bean-definition-overriding: true
+jasypt:
+  encryptor:
+    bean: CnuBotEncryptor
+    algorithm: PBEWithMD5AndDES
+    pool-size: 2
+    string-output-type: base64
+    key-obtention-itertations: 10000
+    password: password
 logging:
   level:
     org.hibernate.SQL: debug

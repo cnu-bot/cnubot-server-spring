@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cnubot.cnubotserver.JasyptConfigTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-27T10:01:03" hostname="DESKTOP-M6VQQ1Q" time="0.289">
+  <properties/>
+  <testcase name="jasypt()" classname="com.cnubot.cnubotserver.JasyptConfigTest" time="0.289"/>
+  <system-out><![CDATA[encryptUrl : u00+QTzmTDn9mn5avCpBY3rBVusxU0JpBclkIFMWLgO7PVUSh11dACVFrNx2ydSvRmbdDAobEvs=
+encryptUsername : Hg9MEAtv/rODTZ5VI/faldGoELc3sw/e
+encryptPassword9Xm3Csn9NrlyLpBuS1bz7g==
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
