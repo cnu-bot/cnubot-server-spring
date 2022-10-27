@@ -19,14 +19,9 @@ spring:
       matching-strategy: ant_path_matcher
   main:
     allow-bean-definition-overriding: true
-jasypt:
-  encryptor:
-    bean: CnuBotEncryptor
-    algorithm: PBEWithMD5AndDES
-    pool-size: 2
-    string-output-type: base64
-    key-obtention-itertations: 10000
-    password: password
+ ## IJ VM option 에 -Djasypt.encryptor.password={암호} 입력
+ ## jasypt:
+ ##   password: password
 logging:
   level:
     org.hibernate.SQL: debug
