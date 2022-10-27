@@ -5,6 +5,7 @@ import com.cnubot.cnubotserver.domain.entity.Board;
 import com.cnubot.cnubotserver.domain.service.BoardService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,13 +21,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/board")
+@RequiredArgsConstructor
 public class BoardController {
 
-    @Autowired
-    BoardService boardService;
+    private final BoardService boardService;
 
     /**
-     *
      * @param menu_name
      * @return Http.status.ok & body(ListOfBoards)
      */

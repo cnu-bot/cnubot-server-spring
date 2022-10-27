@@ -14,17 +14,21 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService{
-    @Autowired
-    BoardRepository repository;
 
-    BoardCrawling boardCrawling;
+    private final BoardRepository repository;
+    private final BoardCrawling boardCrawling;
 
+    /**
+     * 메뉴 이름에 속한 게시글들 반환
+     */
     @Override
     public List<Board> getBoards(String menu_name) {
-
         return repository.findAllByMenu(DepthSecond.valueOf(menu_name));
     }
 
+    /**
+     * 게시글 갱신
+     */
     @Override
     public void refreshBoards() {
         repository.deleteAll();
