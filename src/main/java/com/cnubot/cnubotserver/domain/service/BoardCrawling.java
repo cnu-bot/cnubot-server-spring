@@ -12,6 +12,7 @@ import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.print.Doc;
 import java.io.IOException;
 
 /**
@@ -44,7 +45,7 @@ public class BoardCrawling {
      */
 
     private void getBoard(DepthSecond menu){
-        Document document = getDoc(menu);
+        Document document = getDoc(menu.getPort());
         Elements elements = new Elements();
         Board board = new Board();
         int elementsSize = elements.size();
@@ -123,8 +124,8 @@ public class BoardCrawling {
      * Enum타입의 속성 Port로 urlconnect 시도
      */
 
-    private Document getDoc(DepthSecond menu) {
-        Connection conn = Jsoup.connect(menu.getPort());
+    private Document getDoc(String url) {
+        Connection conn = Jsoup.connect(url);
         Document document = null;
         try {
             document = conn.get();
@@ -139,5 +140,10 @@ public class BoardCrawling {
         return texts[2];
     }
 
+    public String getViewDetail(String boardUrl){
+        Document document = getDoc(boardUrl);
+        Elements element = document.getElementsByClass("board_viewDetail");
+        return element.text();
+    }
 
 }
