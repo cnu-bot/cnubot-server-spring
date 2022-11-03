@@ -37,7 +37,6 @@ public class BoardCrawling {
         for(DepthSecond value : values){
             getBoard(value);
         }
-
     }
 
     /**
