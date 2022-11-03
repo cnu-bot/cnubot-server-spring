@@ -31,7 +31,7 @@ public class BoardServiceImpl implements BoardService{
      */
     @Override
     public void refreshBoards() {
-        repository.deleteAll();
+        repository.deleteAllInBatch();
         boardCrawling.process();
     }
 }
