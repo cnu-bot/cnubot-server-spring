@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.print.Doc;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 메뉴별 dom tree구조가 다름
@@ -46,14 +47,13 @@ public class BoardCrawling {
 
     private void getBoard(DepthSecond menu){
         Document document = getDoc(menu.getPort());
-        Elements elements = new Elements();
-        Board board = new Board();
-        int elementsSize = elements.size();
-
+        Elements elements;
+        Board board;
         if(menu.ordinal()<7){
             elements = document.select("td");
-            for (int i = 0; i < elementsSize - 6; i += 6) {
-                String boardUrl = elements.get(i + 1).childNode(0).attr("href");
+            for (int i = 0; i <  elements.size() - 6; i += 6) {
+                String boardUrl = "https://plus.cnu.ac.kr/_prog/_board"
+                        + elements.get(i + 1).childNode(0).attr("href").replace(".", "");
                 board = Board.builder()
                         .menu(menu)
                         .boardNum(elements.get(i).text())
@@ -69,8 +69,16 @@ public class BoardCrawling {
         }
         else if(menu.ordinal()<10){
             elements = document.select("td");
-            for (int i = 0; i < elementsSize - 6; i += 6) {
-                String boardUrl = elements.get(i + 1).childNode(0).attr("href");
+            for (int i = 0; i < elements.size() - 6; i += 6) {
+                String boardUrl;
+                if(menu.ordinal() == 7){
+                    boardUrl = "https://plus.cnu.ac.kr/_prog/_board"
+                            + elements.get(i + 1).childNode(0).attr("href").replace(".", "");
+                }
+                else{
+                    boardUrl = "https://plus.cnu.ac.kr"
+                            + elements.get(i + 1).childNode(0).attr("href");
+                }
                 board = Board.builder()
                         .menu(menu)
                         .boardNum(elements.get(i).text())
@@ -87,9 +95,9 @@ public class BoardCrawling {
         }
         else if(menu.ordinal()==10){
             elements = document.select(".bodo_listThum");
-
-            for (int i = 0; i < elementsSize; i++) {
-                String boardUrl = elements.get(i).child(0).attr("href");
+            for (int i = 0; i <  elements.size(); i++) {
+                String boardUrl = "https://plus.cnu.ac.kr/_prog/_board"
+                        + elements.get(i).child(0).attr("href").replace(".","");
                 board = Board.builder()
                         .menu(menu)
                         .date(replace(elements.get(i).getElementsByTag("li").get(1).text()))
@@ -147,6 +155,12 @@ public class BoardCrawling {
     public String getViewDetail(String boardUrl){
         Document document = getDoc(boardUrl);
         Elements element = document.getElementsByClass("board_viewDetail");
+        if(element.text().isEmpty()){
+            element = document.getElementsByClass("left_viewDetail");
+        }
+        if(boardUrl.startsWith("https://cnuint.cnu.ac.kr")){
+            element = document.getElementsByClass("fr-view");
+        }
         String boardDetail = element.text();
         return boardDetail;
     }
