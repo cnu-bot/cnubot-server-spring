@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ENC(+5OWcIgxD/Lhiz6XV8m7rLo2Wh8VzCvqGRogXGE3At/r1UGQLXaJBmhjYY8UxmJ1gTcqULpYXqFQrtJ4TGYjwrz6L8QhZ8+ZpJtV0YNHMBCIocpt53bXxVlZj/rmVaUu6zH/nY1OIk0=)
+    username: ENC(ZZCJSO1j+XiHqbJgFFVm7g==)
+    password: ENC(4uLCv2uRMLThzcsaiqzSHA==)
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+  mvc: ##swagger연동을 위한 설정
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  main:
+    allow-bean-definition-overriding: true
+ ## IJ VM option 에 -Djasypt.encryptor.password={암호} 입력
+ ## jasypt:
+ ##   password: password
+logging:
+  level:
+    org.hibernate.SQL: debug
