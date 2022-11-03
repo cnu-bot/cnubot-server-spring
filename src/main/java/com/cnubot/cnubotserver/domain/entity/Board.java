@@ -38,6 +38,9 @@ public class Board {
 
     private String period;
 
+    @Column(name = "board_detail")
+    private String boardDetail;
+
 
 
 
