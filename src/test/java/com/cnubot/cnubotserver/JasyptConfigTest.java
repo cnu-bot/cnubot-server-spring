@@ -15,9 +15,9 @@ public class JasyptConfigTest {
     @Test
     void jasypt(){
 
-        String url = "jdbc:mysql://localhost:3306/cnubot?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul";
-        String username = "root";
-        String password = "1234";
+        String url = "cnubot server url";
+        String username = "ID";
+        String password = "PASSWORD";
         System.out.println(PASSWORD);
 
         String encryptUrl = jasyptEncrypt(url);
