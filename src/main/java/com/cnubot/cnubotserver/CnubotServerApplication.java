@@ -16,10 +16,10 @@ public class CnubotServerApplication {
 		SpringApplication.run(CnubotServerApplication.class, args);
 	}
 
-	/**
+
 	@Bean
 	CommandLineRunner run(BoardCrawling crawling){
 		return  args ->crawling.process();
-	}*/
+	}
 
 }
