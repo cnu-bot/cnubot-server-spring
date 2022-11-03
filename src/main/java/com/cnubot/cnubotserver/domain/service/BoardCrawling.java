@@ -62,6 +62,7 @@ public class BoardCrawling {
                         .hits(elements.get(i + 4).text())
                         .url(boardUrl)
                         .name(elements.get(i + 1).text())
+                        .boardDetail(getViewDetail(boardUrl))
                         .build();
                 repository.save(board);
             }
@@ -79,6 +80,7 @@ public class BoardCrawling {
                         .url(boardUrl)
                         .name(elements.get(i + 1).text())
                         .period(elements.get(i + 3).text())
+                        .boardDetail(getViewDetail(boardUrl))
                         .build();
                 repository.save(board);
             }
@@ -96,6 +98,7 @@ public class BoardCrawling {
                         .url(boardUrl)
                         .name(elements.get(i).getElementsByTag("h4").text())
                         .picUrl(elements.get(i).child(0).child(0).attr("src"))
+                        .boardDetail(getViewDetail(boardUrl))
                         .build();
                 repository.save(board);
             }
@@ -113,6 +116,7 @@ public class BoardCrawling {
                         .hits(element.getElementsByClass("hit").text().split(" ")[1])
                         .url(boardUrl)
                         .name(element.getElementsByTag("a").text())
+                        .boardDetail(getViewDetail(boardUrl))
                         .build();
                 repository.save(board);
             }
@@ -143,7 +147,8 @@ public class BoardCrawling {
     public String getViewDetail(String boardUrl){
         Document document = getDoc(boardUrl);
         Elements element = document.getElementsByClass("board_viewDetail");
-        return element.text();
+        String boardDetail = element.text();
+        return boardDetail;
     }
 
 }
