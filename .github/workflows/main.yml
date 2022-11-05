@@ -12,7 +12,7 @@ on:
     branches: ["main"]
 
 env:
-  DOCKER_IMAGE: ghcr.io/cnubot/cnubot-server-spring
+  DOCKER_IMAGE: ghcr.io/cnu-bot/cnubot-server-spring
   VERSION: ${{ github.sha }}
   NAME: cnubot-server-spring
 
