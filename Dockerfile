@@ -9,6 +9,9 @@ FROM openjdk:11 as runner
 
 WORKDIR /app
 
+ARG CNUBOT_KEY
+ENV CNUBOT_KEY ${CNUBOT_KEY}
+
 COPY --from=builder ./build/libs/*.jar app.jar
 
 EXPOSE 8087
