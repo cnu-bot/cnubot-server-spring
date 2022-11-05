@@ -9,7 +9,7 @@ name: Gradle Package
 
 on:
   push:
-    branches: ["develop"]
+    branches: ["main"]
 
 env:
   DOCKER_IMAGE: ghcr.io/cnubot/cnubot-spring-server
