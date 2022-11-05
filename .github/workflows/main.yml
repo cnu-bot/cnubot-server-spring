@@ -52,6 +52,8 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ env.DOCKER_IMAGE }}:latest
+          build-args: |
+            CNUBOT_KEY=${{ secrets.CNUBOT_KEY }}
   deploy:
     needs: build
     name: Deploy

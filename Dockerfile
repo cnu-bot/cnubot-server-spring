@@ -13,4 +13,4 @@ COPY --from=builder ./build/libs/*.jar app.jar
 
 EXPOSE 8087
 
-ENTRYPOINT java -jar app.jar 
+ENTRYPOINT java -jar -Djasypt.encryptor.password=${CNUBOT_KEY} app.jar 
