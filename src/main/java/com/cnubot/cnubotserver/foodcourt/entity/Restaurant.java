@@ -1,6 +1,11 @@
 package com.cnubot.cnubotserver.foodcourt.entity;
 
+import com.cnubot.cnubotserver.domain.entity.DepthSecond;
+import com.cnubot.cnubotserver.foodcourt.enums.FoodCourt;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,8 +22,10 @@ public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // 기숙사, 2학, 3학, 4학, 생과대
-    private String place;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "food_court")
+    private FoodCourt foodCourt;
 
     //월 화 수 목 금 토 일
     private String day;
@@ -29,10 +36,5 @@ public class Restaurant {
     private String lunch;
     @Lob
     private String dinner;
-
-    // 회관, 생과대 (정식 학생or 일품 교직원) , 긱사 main A(칼로리),  main C(칼로리)
-   // private String type;
-
-
 
 }
