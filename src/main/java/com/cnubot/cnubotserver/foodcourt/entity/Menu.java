@@ -1,17 +1,18 @@
 package com.cnubot.cnubotserver.foodcourt.entity;
 
 import com.cnubot.cnubotserver.foodcourt.enums.FoodCourt;
+import com.cnubot.cnubotserver.foodcourt.enums.Time;
+import com.cnubot.cnubotserver.foodcourt.enums.Week;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -31,10 +32,25 @@ public class Menu {
     private FoodCourt foodCourt;
 
     //월 화 수 목 금 토 일
-    private String day;
+    @Enumerated(EnumType.STRING)
+    private Week day;
+
+    @Enumerated(EnumType.STRING)
+    private Time time;
 
     private String type;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Food> foods = new ArrayList<>();
+    @ElementCollection(targetClass = String.class)
+    private List<String> foods = new ArrayList<String>();
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "foodCourt=" + foodCourt +
+                ", day=" + day +
+                ", time=" + time +
+                ", type='" + type + '\'' +
+                ", foods=" + foods +
+                '}';
+    }
 }
