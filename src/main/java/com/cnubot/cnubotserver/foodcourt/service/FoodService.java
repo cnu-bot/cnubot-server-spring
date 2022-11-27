@@ -9,4 +9,6 @@ public interface FoodService {
 
     void refreshMenu();
 
+    List<Menu> getMenus(String foodCourt);
+
 }

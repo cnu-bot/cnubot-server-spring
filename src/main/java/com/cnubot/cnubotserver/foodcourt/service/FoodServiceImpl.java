@@ -22,5 +22,10 @@ public class FoodServiceImpl implements FoodService {
         menuRepository.deleteAllInBatch();
         foodCrawling.process();
     }
-    
+
+    @Override
+    public List<Menu> getMenus(String foodCourt) {
+        return menuRepository.findAllByFoodCourt(FoodCourt.valueOf(foodCourt));
+
+    }
 }
