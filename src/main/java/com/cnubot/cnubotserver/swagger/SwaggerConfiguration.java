@@ -1,4 +1,4 @@
-package com.cnubot.cnubotserver.domain.config;
+package com.cnubot.cnubotserver.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

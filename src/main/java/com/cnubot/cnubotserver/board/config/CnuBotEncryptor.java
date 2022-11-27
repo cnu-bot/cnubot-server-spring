@@ -1,4 +1,4 @@
-package com.cnubot.cnubotserver.domain.config;
+package com.cnubot.cnubotserver.board.config;
 
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 

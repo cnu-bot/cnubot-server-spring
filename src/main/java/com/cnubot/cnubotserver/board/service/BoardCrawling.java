@@ -1,20 +1,17 @@
-package com.cnubot.cnubotserver.domain.service;
+package com.cnubot.cnubotserver.board.service;
 
-import com.cnubot.cnubotserver.domain.entity.Board;
-import com.cnubot.cnubotserver.domain.entity.DepthSecond;
-import com.cnubot.cnubotserver.domain.repository.BoardRepository;
+import com.cnubot.cnubotserver.board.entity.Board;
+import com.cnubot.cnubotserver.board.entity.DepthSecond;
+import com.cnubot.cnubotserver.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.Doc;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 /**
  * 메뉴별 dom tree구조가 다름

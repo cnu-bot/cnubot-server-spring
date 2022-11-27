@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class FoodCrawling {
 
-    MenuRepository repository;
+    private final MenuRepository repository;
 
     public void process() {
         FoodCourt[] values = FoodCourt.values();

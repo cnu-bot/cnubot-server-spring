@@ -1,7 +1,6 @@
-package com.cnubot.cnubotserver.domain.service;
+package com.cnubot.cnubotserver.board.service;
 
-import com.cnubot.cnubotserver.domain.entity.Board;
-import com.cnubot.cnubotserver.domain.entity.DepthSecond;
+import com.cnubot.cnubotserver.board.entity.Board;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

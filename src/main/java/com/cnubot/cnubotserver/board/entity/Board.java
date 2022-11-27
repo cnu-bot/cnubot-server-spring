@@ -1,4 +1,4 @@
-package com.cnubot.cnubotserver.domain.entity;
+package com.cnubot.cnubotserver.board.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

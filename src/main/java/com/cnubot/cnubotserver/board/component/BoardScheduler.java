@@ -1,8 +1,7 @@
-package com.cnubot.cnubotserver.domain.Component;
+package com.cnubot.cnubotserver.board.component;
 
-import com.cnubot.cnubotserver.domain.service.BoardService;
+import com.cnubot.cnubotserver.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
