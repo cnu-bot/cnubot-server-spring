@@ -30,8 +30,7 @@ class FoodCourtServiceImplTest {
         List<Menu> menus = foodService.getMenus(FoodCourt.DORMITORY.name(), "FRIDAY");
 
         System.out.println(menus);
-        assertThat(menus.size()).isEqualTo(10);
-
+        assertThat(menus.size()).isEqualTo(5);
     }
 
     @Test
