@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import javax.swing.plaf.synth.SynthDesktopIconUI;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -169,6 +170,62 @@ class FoodCrawlingTest {
             e.printStackTrace();
         }
         return document;
+    }
+
+    @Test
+    void process() {
+        FoodCourt[] values = FoodCourt.values();
+        for (FoodCourt value : values) {
+            if (value == FoodCourt.DORMITORY) {
+
+            } else {
+                getStudentHall(value);
+            }
+        }
+    }
+
+
+    void getStudentHall(FoodCourt foodCourt) {
+        List<String> foods;
+        Document document = getDoc(foodCourt.getPort());
+        Elements elements = document.select("tr");
+        System.out.println("hgdgffaf");
+        for (int i = 2; i < 5; i++) { // 아침 학생 점심 학생, 교직
+            Time time;
+            if (i == 2) {
+                time = Time.BREAKFAST;
+            } else {
+                time = Time.LUNCH;
+            }
+            Element tr = elements.get(i);
+            String typeFirst;
+            int index;
+            if (tr.select("td").size() == 8) {
+                typeFirst = (tr.select("td").get(1).text()); //
+                index = 2;
+            } else {
+                typeFirst = (tr.select("td").get(0).text()); //
+                index = 1;
+            }
+            for (int j = index; j < index + 5; j++) { // 월화수목금토
+                Element td = tr.select("td").get(j);
+                Elements li = td.select("li");
+                Elements types = li.select("h3");
+                Elements foodByP = li.select("p");
+                for (int k = 0; k < types.size(); k++) { // 하나의 식사에 양식 일품 두가지 있을 때를 대비
+                    foods = new ArrayList(Arrays.asList(foodByP.get(k).text().split(" ")));
+                    String typeSecond = " " + types.get(k).text();
+                    Menu menu = Menu.builder()
+                            .day(Week.values()[j - index])
+                            .type(typeFirst + typeSecond)
+                            .foods(foods)
+                            .time(time)
+                            .foodCourt(foodCourt)
+                            .build();
+                    System.out.println(menu);
+                }
+            }
+        }
     }
 
 }
