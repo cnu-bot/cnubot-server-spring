@@ -2,6 +2,7 @@ package com.cnubot.cnubotserver.foodcourt.service;
 
 import com.cnubot.cnubotserver.foodcourt.entity.Menu;
 import com.cnubot.cnubotserver.foodcourt.enums.FoodCourt;
+import com.cnubot.cnubotserver.foodcourt.enums.Week;
 import com.cnubot.cnubotserver.foodcourt.repository.MenuRepository;
 import com.cnubot.cnubotserver.foodcourt.service.crawling.FoodCrawling;
 import java.util.List;
@@ -25,7 +26,7 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public List<Menu> getMenus(String foodCourt, String day) {
-        return menuRepository.findAllByFoodCourt(FoodCourt.valueOf(foodCourt));
+        return menuRepository.findAllByFoodCourtAndDay(FoodCourt.valueOf(foodCourt), Week.valueOf(day));
 
     }
 }
