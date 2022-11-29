@@ -24,7 +24,7 @@ public class FoodServiceImpl implements FoodService {
     }
 
     @Override
-    public List<Menu> getMenus(String foodCourt) {
+    public List<Menu> getMenus(String foodCourt, String day) {
         return menuRepository.findAllByFoodCourt(FoodCourt.valueOf(foodCourt));
 
     }

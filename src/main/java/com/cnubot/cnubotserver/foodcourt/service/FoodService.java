@@ -9,6 +9,6 @@ public interface FoodService {
 
     void refreshMenu();
 
-    List<Menu> getMenus(String foodCourt);
+    List<Menu> getMenus(String foodCourt, String day);
 
 }
