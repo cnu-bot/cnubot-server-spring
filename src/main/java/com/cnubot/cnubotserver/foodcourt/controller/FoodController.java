@@ -39,6 +39,15 @@ public class FoodController {
         return ResponseEntity.ok().body(menus);
     }
 
+    @ApiOperation(value = "1학메뉴를 저장  반환하는 api"
+            , notes = "type 입력시 RAMYUN_AND_SNACK(\"라면&간식\"),\n"
+            + "    WESTERN_FOOD(\"양식\"),\n"
+            + "    FUSION_SNACK(\"스낵\"),\n"
+            + "    KOREAN_FOOD(\"한식\"),\n"
+            + "    JAPANESE_FOOD(\"일식\"),\n"
+            + "    CHINESE_FOOD(\"중식\") "
+            )
+    @ApiImplicitParam(name = "foodDto", value = "저장할 메뉴", required = true, dataType = "Object")
     @PostMapping("/first-student-hall/")
     public ResponseEntity<FirstStudentHall> addFood(@RequestBody FoodDto foodDto) throws CnuBotException {
         try {
@@ -49,6 +58,9 @@ public class FoodController {
         }
     }
 
+    @ApiOperation(value = "1학 메뉴를 삭제하는 api"
+            , notes = "풀 네임 요구")
+    @ApiImplicitParam(name = "foodName", value = "삭제할 메뉴 이름", required = true, dataType = "String")
     @DeleteMapping("/first-student-hall/")
     public ResponseEntity<FirstStudentHall> deleteFood(@RequestParam String foodName) throws CnuBotException {
         try {
@@ -59,6 +71,9 @@ public class FoodController {
         }
     }
 
+    @ApiOperation(value = "푸드코트별 메뉴를 반환하는 api"
+            , notes = "input값 형식 RAMYUN_AND_SNACK,WESTERN_FOOD,FUSION_SNACK,KOREAN_FOOD,JAPANESE_FOOD,CHINESE_FOOD")
+    @ApiImplicitParam(name = "firstHallType", value = "조회할 푸드코트 이름", required = true, dataType = "String")
     @GetMapping("/first-student-hall/")
     public ResponseEntity<List<FirstStudentHall>> getMenus(@RequestParam String firstHallType) {
         List<FirstStudentHall> menus = firstHallService.getMenus(firstHallType);
