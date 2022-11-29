@@ -6,7 +6,9 @@ import static org.springframework.http.HttpStatus.*;
 import com.cnubot.cnubotserver.exception.CnuBotException;
 import com.cnubot.cnubotserver.foodcourt.controller.dto.FoodDto;
 import com.cnubot.cnubotserver.foodcourt.entity.FirstStudentHall;
+import com.cnubot.cnubotserver.foodcourt.enums.FirstHallType;
 import com.cnubot.cnubotserver.foodcourt.repository.StudentHallRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,6 +39,12 @@ public class FirstHallServiceImpl implements FirstHallService {
             throw new CnuBotException(FOOD_COURT, BAD_REQUEST, "존재하지 않는 메뉴입니다.");
         }
         repository.deleteByFoodName(foodName);
+    }
+
+    @Override
+    public List<FirstStudentHall> getMenus(String firstHallType) {
+        List<FirstStudentHall> menus = repository.findAllByType(FirstHallType.valueOf(firstHallType));
+        return menus;
     }
 
     private boolean isExist(String foodName) {

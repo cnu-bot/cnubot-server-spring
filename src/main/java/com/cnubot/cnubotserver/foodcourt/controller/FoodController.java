@@ -9,6 +9,7 @@ import com.cnubot.cnubotserver.foodcourt.service.FoodService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,7 +39,7 @@ public class FoodController {
         return ResponseEntity.ok().body(menus);
     }
 
-    @PostMapping("/")
+    @PostMapping("/first-student-hall/")
     public ResponseEntity<FirstStudentHall> addFood(@RequestBody FoodDto foodDto) throws CnuBotException {
         try {
             FirstStudentHall addedResult = firstHallService.addFood(foodDto);
@@ -48,7 +49,7 @@ public class FoodController {
         }
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("/first-student-hall/")
     public ResponseEntity<FirstStudentHall> deleteFood(@RequestParam String foodName) throws CnuBotException {
         try {
             firstHallService.deleteFood(foodName);
@@ -56,6 +57,12 @@ public class FoodController {
         } catch (CnuBotException exception) {
             throw exception;
         }
+    }
+
+    @GetMapping("/first-student-hall/")
+    public ResponseEntity<List<FirstStudentHall>> getMenus(@RequestParam String firstHallType) {
+        List<FirstStudentHall> menus = firstHallService.getMenus(firstHallType);
+        return ResponseEntity.ok().body(menus);
     }
 
 
