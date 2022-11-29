@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 @Transactional
-class FirstHallServiceImplTest {
+class FoodCourtServiceImplTest {
     @Autowired
     FoodService foodService;
     @Autowired
@@ -31,4 +31,6 @@ class FirstHallServiceImplTest {
         assertThat(menus.size()).isEqualTo(10);
 
     }
+
+
 }
