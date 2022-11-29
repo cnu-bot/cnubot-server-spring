@@ -29,8 +29,9 @@ public class FoodCrawling {
         for (FoodCourt value : values) {
             if (value == FoodCourt.DORMITORY) {
                 getDormitory(value);
+            } else {
+                getStudentHall(value);
             }
-            getStudentHall(value);
         }
     }
 
