@@ -42,4 +42,25 @@ public class FoodController {
         return ResponseEntity.ok().body(menus);
     }
 
+    @PostMapping("/")
+    public ResponseEntity<FirstStudentHall> addFood(@RequestBody FoodDto foodDto) throws CnuBotException {
+        try {
+            FirstStudentHall addedResult = firstHallService.addFood(foodDto);
+            return ResponseEntity.ok().body(addedResult);
+        } catch (CnuBotException exception) {
+            throw exception;
+        }
+    }
+
+    @DeleteMapping("/")
+    public ResponseEntity<FirstStudentHall> deleteFood(@RequestParam String foodName) throws CnuBotException {
+        try {
+            firstHallService.deleteFood(foodName);
+            return ResponseEntity.ok().build();
+        } catch (CnuBotException exception) {
+            throw exception;
+        }
+    }
+
+
 }
