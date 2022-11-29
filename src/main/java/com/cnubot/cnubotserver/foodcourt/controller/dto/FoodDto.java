@@ -1,4 +1,4 @@
-package com.cnubot.cnubotserver.foodcourt.controller;
+package com.cnubot.cnubotserver.foodcourt.controller.dto;
 
 import com.cnubot.cnubotserver.foodcourt.enums.FirstHallType;
 import lombok.AllArgsConstructor;

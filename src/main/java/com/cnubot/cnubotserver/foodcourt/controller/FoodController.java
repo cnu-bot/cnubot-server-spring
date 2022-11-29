@@ -1,10 +1,7 @@
 package com.cnubot.cnubotserver.foodcourt.controller;
 
-import static com.cnubot.cnubotserver.exception.Constants.ExceptionClass.*;
-import static org.springframework.http.HttpStatus.*;
-
 import com.cnubot.cnubotserver.exception.CnuBotException;
-import com.cnubot.cnubotserver.exception.Constants.ExceptionClass;
+import com.cnubot.cnubotserver.foodcourt.controller.dto.FoodDto;
 import com.cnubot.cnubotserver.foodcourt.entity.FirstStudentHall;
 import com.cnubot.cnubotserver.foodcourt.entity.Menu;
 import com.cnubot.cnubotserver.foodcourt.service.FirstHallService;
@@ -13,7 +10,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -4,7 +4,7 @@ import static com.cnubot.cnubotserver.exception.Constants.ExceptionClass.*;
 import static org.springframework.http.HttpStatus.*;
 
 import com.cnubot.cnubotserver.exception.CnuBotException;
-import com.cnubot.cnubotserver.foodcourt.controller.FoodDto;
+import com.cnubot.cnubotserver.foodcourt.controller.dto.FoodDto;
 import com.cnubot.cnubotserver.foodcourt.entity.FirstStudentHall;
 import com.cnubot.cnubotserver.foodcourt.repository.StudentHallRepository;
 import lombok.RequiredArgsConstructor;
