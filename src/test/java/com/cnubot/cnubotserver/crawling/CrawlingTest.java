@@ -1,7 +1,7 @@
 package com.cnubot.cnubotserver.crawling;
 
 
-import com.cnubot.cnubotserver.domain.service.BoardCrawling;
+import com.cnubot.cnubotserver.board.service.BoardCrawling;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

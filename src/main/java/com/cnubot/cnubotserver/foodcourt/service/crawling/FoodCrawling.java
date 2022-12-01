@@ -22,15 +22,16 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class FoodCrawling {
 
-    MenuRepository repository;
+    private final MenuRepository repository;
 
     public void process() {
         FoodCourt[] values = FoodCourt.values();
         for (FoodCourt value : values) {
             if (value == FoodCourt.DORMITORY) {
                 getDormitory(value);
+            } else {
+                getStudentHall(value);
             }
-            getStudentHall(value);
         }
     }
 
