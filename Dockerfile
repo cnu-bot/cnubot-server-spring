@@ -2,7 +2,8 @@ FROM openjdk:11 as builder
 
 COPY . .
 
-RUN chmod 755 ./gradlew clean bootJar
+RUN chmod 755 ./gradlew && \
+    ./gradlew clean bootjar
 
 FROM openjdk:11 as runner
 
