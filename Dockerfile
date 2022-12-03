@@ -3,7 +3,7 @@ FROM openjdk:11 as builder
 COPY . .
 
 RUN chmod 755 ./gradlew && \
-    ./gradlew clean build
+    ./gradlew clean build -x test
 
 FROM openjdk:11 as runner
 
