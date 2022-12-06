@@ -44,20 +44,18 @@
 <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 <img src="https://img.shields.io/badge/Amazon Ec2-FF9900?style=for-the-badge&logo=Amazon Ec2&logoColor=white">
 
-<br>
-
 ### Infra
 <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
 
 
 ## Commit Convention
 
-feat: 새로운 기능에 대한 커밋  
-fix: 버그 수정에 대한 커밋  
-hotfix: main or develop 브랜치에서 긴급 수정해야할 경우
-chore: 그 외 자잘한 수정에 대한 커밋  
-docs: README.md 수정에 대한 커밋  
-refactor: 코드 리팩토링 (최적화 개선)
+- feat: 새로운 기능에 대한 커밋  
+- fix: 버그 수정에 대한 커밋  
+- hotfix: main or develop 브랜치에서 긴급 수정해야할 경우 커밋
+- chore: 그 외 자잘한 수정에 대한 커밋  
+- docs: README.md 수정에 대한 커밋  
+- refactor: 코드 리팩토링 (최적화 개선)
 
 ## Architecture
 
@@ -103,9 +101,9 @@ Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
 2. check our issue list
-3. Create your Feature Branch (`git checkout -b feat-AmazingFeature`) we have our convention
-4. Commit your Changes (`git commit -m 'feat: I made it'`)
-5. Push to the Branch (`git push origin feat-AmazingFeature`)
+3. Create your Feature Branch (`git checkout -b feat: create domain`) we have our convention
+4. Commit your Changes (`git commit -m 'feat: add domain logic'`)
+5. Push to the Branch (`git push origin feat-board`)
 6. Open a Pull Request (we have our PR templates)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
