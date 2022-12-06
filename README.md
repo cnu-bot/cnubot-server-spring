@@ -32,7 +32,6 @@
 
 ### Framework
 <img src="https://img.shields.io/badge/Spring boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
-<br>
 
 ### Project
 <img src="https://img.shields.io/badge/gradle-4479A1?style=for-the-badge&logo=gradle&logoColor=white">
