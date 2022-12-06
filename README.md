@@ -122,3 +122,6 @@ Chanhyuk Park - [GitHub](https://github.com/ChanhyukPark-Tech) - chanhyuk-tech@k
 ## 🌟 Contributors
 
 [![contributors](https://contrib.rocks/image?repo=cnu-bot/cnubot-server-spring)](https://github.com/cnu-bot/cnubot-client-app/graphs/contributors)
+
+# cnubot-server-spring
+
