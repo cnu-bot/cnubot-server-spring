@@ -15,8 +15,6 @@
     <a href="https://github.com/cnu-bot"><strong>Explore the Organization</strong></a>
     <br />
     <br />
-    <!-- <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a> -->
-    <!-- · -->
     <a href="https://github.com/cnu-bot/cnubot-server-spring/issues">Issues</a>
     ·
     <a href="https://github.com/orgs/cnu-bot/projects/3">MileStone</a>
@@ -41,10 +39,10 @@
 
 ### Database
 <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
-<img src="https://img.shields.io/badge/Amazon Ec2-FF9900?style=for-the-badge&logo=Amazon Ec2&logoColor=white">
 
 ### Infra
 <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
+<img src="https://img.shields.io/badge/Amazon Ec2-FF9900?style=for-the-badge&logo=Amazon Ec2&logoColor=white">
 
 
 ## Commit Convention
@@ -99,8 +97,8 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. check our issue list
-3. Create your Feature Branch (`git checkout -b feat: create domain`) we have our convention
+2. Check our Issue List
+3. Create your Feature Branch (`git checkout -b feat: create-domain`) we have our convention
 4. Commit your Changes (`git commit -m 'feat: add domain logic'`)
 5. Push to the Branch (`git push origin feat-board`)
 6. Open a Pull Request (we have our PR templates)
