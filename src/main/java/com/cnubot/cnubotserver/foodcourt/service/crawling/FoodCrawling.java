@@ -1,5 +1,6 @@
 package com.cnubot.cnubotserver.foodcourt.service.crawling;
 
+import com.cnubot.cnubotserver.exception.CnuBotException;
 import com.cnubot.cnubotserver.foodcourt.entity.Menu;
 import com.cnubot.cnubotserver.foodcourt.enums.FoodCourt;
 import com.cnubot.cnubotserver.foodcourt.enums.Time;
@@ -101,13 +102,18 @@ public class FoodCrawling {
             String lunch = removeEng(tds.get(i + 2).select(".left").text()); // 점심
             String dinner = removeEng(tds.get(i + 3).select(".left").text()); // 저녁
             String day = getDay(tds.get(i).text());
-            dormitorySave(breakfast, day, Time.BREAKFAST);
-            dormitorySave(lunch, day, Time.LUNCH);
-            dormitorySave(dinner, day, Time.DINNER);
+            try {
+                dormitorySave(breakfast, day, Time.BREAKFAST);
+                dormitorySave(lunch, day, Time.LUNCH);
+                dormitorySave(dinner, day, Time.DINNER);
+            } catch (CnuBotException exception) {
+                // 추후 에러로그 따로 저장해 추가할 생각
+            }
+
         }
     }
 
-    private void dormitorySave(String target, String day, Time time) {
+    private void dormitorySave(String target, String day, Time time) throws CnuBotException {
         System.out.println(day);
         Optional<Week> findDay = Arrays.stream(Week.values()).filter(s -> s.getDay().equals(day)).findFirst();
 
