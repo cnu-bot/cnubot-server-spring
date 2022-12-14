@@ -1,15 +1,18 @@
 package com.cnubot.cnubotserver.foodcourt.service.crawling;
 
+import com.cnubot.cnubotserver.exception.CnuBotException;
 import com.cnubot.cnubotserver.foodcourt.entity.Menu;
 import com.cnubot.cnubotserver.foodcourt.enums.FoodCourt;
 import com.cnubot.cnubotserver.foodcourt.enums.Time;
 import com.cnubot.cnubotserver.foodcourt.enums.Week;
 import com.cnubot.cnubotserver.foodcourt.repository.MenuRepository;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
 import lombok.AllArgsConstructor;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -99,43 +102,70 @@ public class FoodCrawling {
             String lunch = removeEng(tds.get(i + 2).select(".left").text()); // 점심
             String dinner = removeEng(tds.get(i + 3).select(".left").text()); // 저녁
             String day = getDay(tds.get(i).text());
-            dormitorySave(breakfast, day, Time.BREAKFAST);
-            dormitorySave(lunch, day, Time.LUNCH);
-            dormitorySave(dinner, day, Time.DINNER);
+            try {
+                dormitorySave(breakfast, day, Time.BREAKFAST);
+                dormitorySave(lunch, day, Time.LUNCH);
+                dormitorySave(dinner, day, Time.DINNER);
+            } catch (CnuBotException exception) {
+                // 추후 에러로그 따로 저장해 추가할 생각
+            }
+
         }
     }
 
-    private void dormitorySave(String target, String day, Time time) {
+    private void dormitorySave(String target, String day, Time time) throws CnuBotException {
         System.out.println(day);
         Optional<Week> findDay = Arrays.stream(Week.values()).filter(s -> s.getDay().equals(day)).findFirst();
 
         List<String> list = new ArrayList<>(Arrays.asList(target.split(" ")));
-        Optional<String> element = list.stream().filter(s -> s.contains("메인C")).findFirst();
-        String typeOfA = list.get(0);
-        List<String> listOfMainA = list;
-        if (element.isPresent()) {
-            int indexOfMainC = list.indexOf(element.get());
-            String typeOfC = list.get(indexOfMainC);
-            listOfMainA = list.subList(1, indexOfMainC);
-            List<String> listOfMainC = list.subList(indexOfMainC + 1, list.size());
-            Menu menuC = Menu.builder()
+        Long menuCount = list.stream().filter(s -> s.contains("메인")).count();
+
+        if (menuCount == 1) {
+            List<String> menus = list.subList(1, list.size());
+            Menu menu = Menu.builder()
                     .time(time)
-                    .foods(listOfMainC)
+                    .foods(menus)
                     .foodCourt(FoodCourt.DORMITORY)
-                    .type(typeOfC)
+                    .type(list.get(0))
                     .day(findDay.get())
                     .build();
-            repository.save(menuC);
+            repository.save(menu);
         }
-        Menu menuA = Menu.builder()
-                .time(time)
-                .foods(listOfMainA)
-                .foodCourt(FoodCourt.DORMITORY)
-                .type(typeOfA)
-                .day(findDay.get())
-                .build();
-        repository.save(menuA);
+        if (menuCount == 2) {
+            Optional<String> elementA = list.stream().filter(s -> s.contains("메인A")).findFirst();
+            Optional<String> elementC = list.stream().filter(s -> s.contains("메인C")).findFirst();
+            int indexOfA = list.indexOf(elementA.get());
+            int indexOfC = list.indexOf(elementC.get());
 
+            List<String> aMenus = null;
+            List<String> cMenus = null;
+            if (indexOfA < indexOfC) {
+                aMenus = list.subList(indexOfA + 1, indexOfC);
+                cMenus = list.subList(indexOfC + 1, list.size());
+            }
+            if (indexOfC < indexOfA) {
+                cMenus = list.subList(indexOfC + 1, indexOfC);
+                aMenus = list.subList(indexOfA + 1, list.size());
+            }
+
+            Menu aMenu = Menu.builder()
+                    .time(time)
+                    .foods(aMenus)
+                    .foodCourt(FoodCourt.DORMITORY)
+                    .type(list.get(indexOfA))
+                    .day(findDay.get())
+                    .build();
+
+            Menu cMenu = Menu.builder()
+                    .time(time)
+                    .foods(cMenus)
+                    .foodCourt(FoodCourt.DORMITORY)
+                    .type(list.get(indexOfC))
+                    .day(findDay.get())
+                    .build();
+            repository.save(aMenu);
+            repository.save(cMenu);
+        }
     }
 
     private String removeEng(String data) {
